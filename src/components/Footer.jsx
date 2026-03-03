@@ -11,8 +11,8 @@ export default function Footer() {
         <footer
             id="reportes"
             style={{
-                background: '#060d1a',
-                borderTop: '1px solid rgba(201,168,76,0.15)',
+                background: 'var(--bg-nav)',
+                borderTop: '1px solid var(--border-color)',
                 padding: 'clamp(3rem, 6vw, 5rem) clamp(1.2rem, 5vw, 3rem) 2rem',
             }}
         >
@@ -48,7 +48,7 @@ export default function Footer() {
                         </p>
                         <div style={{ display: 'flex', gap: '0.75rem' }}>
                             {[Globe, Mail, Phone].map((Icon, i) => (
-                                <button key={i} style={{
+                                <button key={i} aria-label={['Sitio web', 'Correo', 'Teléfono'][i]} style={{
                                     width: '32px', height: '32px', borderRadius: '8px',
                                     background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.2)',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',

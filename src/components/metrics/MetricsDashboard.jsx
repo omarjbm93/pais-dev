@@ -11,7 +11,7 @@ export default function MetricsDashboard() {
             ref={sectionRef}
             style={{
                 padding: 'clamp(4rem, 8vw, 7rem) clamp(1.2rem, 5vw, 3rem)',
-                background: 'linear-gradient(180deg, #0A1628 0%, #060d1a 100%)',
+                background: 'linear-gradient(180deg, var(--bg-main) 0%, var(--bg-surface) 100%)',
                 position: 'relative',
                 overflow: 'hidden',
             }}
@@ -50,7 +50,7 @@ export default function MetricsDashboard() {
                         fontFamily: 'var(--font-display)',
                         fontSize: 'clamp(2rem, 4vw, 3rem)',
                         fontWeight: 600,
-                        color: '#f1f5f9',
+                        color: 'var(--text-main)',
                         marginBottom: '0.75rem',
                     }}>
                         Métricas de Control Nacional

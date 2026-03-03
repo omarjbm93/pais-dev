@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Menu, X, Shield, ChevronDown } from 'lucide-react'
+import { Menu, X, Shield, ChevronDown, Sun, Moon } from 'lucide-react'
 
 const navLinks = [
     { label: 'Inicio', href: '#hero' },
@@ -8,7 +8,7 @@ const navLinks = [
     { label: 'Reportes', href: '#reportes' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ theme, toggleTheme }) {
     const [scrolled, setScrolled] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
     const [activeLink, setActiveLink] = useState('Inicio')
@@ -29,10 +29,10 @@ export default function Navbar() {
                 zIndex: 100,
                 transition: 'all 0.4s ease',
                 background: scrolled
-                    ? 'rgba(6,13,26,0.92)'
+                    ? 'var(--bg-nav)'
                     : 'transparent',
                 backdropFilter: scrolled ? 'blur(16px)' : 'none',
-                borderBottom: scrolled ? '1px solid rgba(201,168,76,0.15)' : '1px solid transparent',
+                borderBottom: scrolled ? '1px solid var(--border-color)' : '1px solid transparent',
                 padding: '0 2rem',
             }}
         >
@@ -69,7 +69,7 @@ export default function Navbar() {
                                 fontWeight: 500,
                                 letterSpacing: '0.06em',
                                 textTransform: 'uppercase',
-                                color: activeLink === link.label ? '#E8C96D' : 'var(--slate-300)',
+                                color: activeLink === link.label ? 'var(--accent-gold)' : 'var(--text-muted)',
                                 textDecoration: 'none',
                                 transition: 'color 0.2s',
                                 position: 'relative',
@@ -96,6 +96,23 @@ export default function Navbar() {
                     >
                         Acceder
                     </a>
+                    <button
+                        onClick={toggleTheme}
+                        aria-label="Alternar modo de color"
+                        style={{
+                            background: 'transparent',
+                            border: 'none',
+                            cursor: 'pointer',
+                            color: 'var(--text-main)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '6px',
+                            borderRadius: '50%',
+                        }}
+                    >
+                        {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                    </button>
                 </div>
 
                 {/* Hamburger */}
@@ -116,8 +133,8 @@ export default function Navbar() {
             {/* Mobile menu */}
             {menuOpen && (
                 <div style={{
-                    background: 'rgba(6,13,26,0.97)',
-                    borderTop: '1px solid rgba(201,168,76,0.15)',
+                    background: 'var(--bg-nav)',
+                    borderTop: '1px solid var(--border-color)',
                     padding: '1.5rem 2rem',
                     display: 'flex', flexDirection: 'column', gap: '1.2rem',
                     animation: 'fadeInDown 0.3s ease both',
@@ -128,10 +145,10 @@ export default function Navbar() {
                             href={link.href}
                             onClick={() => { setActiveLink(link.label); setMenuOpen(false) }}
                             style={{
-                                color: activeLink === link.label ? '#E8C96D' : 'var(--slate-300)',
+                                color: activeLink === link.label ? 'var(--accent-gold)' : 'var(--text-muted)',
                                 textDecoration: 'none', fontWeight: 500,
                                 fontSize: '0.95rem', letterSpacing: '0.04em',
-                                borderBottom: '1px solid rgba(201,168,76,0.08)', paddingBottom: '1rem',
+                                borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem',
                             }}
                         >
                             {link.label}
@@ -149,6 +166,25 @@ export default function Navbar() {
                     >
                         Acceder al Dashboard
                     </a>
+                    <button
+                        onClick={toggleTheme}
+                        aria-label="Alternar modo de color"
+                        style={{
+                            background: 'transparent',
+                            border: 'none',
+                            cursor: 'pointer',
+                            color: 'var(--text-main)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '10px',
+                            padding: '10px 0',
+                            fontSize: '0.95rem',
+                            fontWeight: 500,
+                        }}
+                    >
+                        {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                        <span>{theme === 'dark' ? 'Modo Claro' : 'Modo Oscuro'}</span>
+                    </button>
                 </div>
             )}
 

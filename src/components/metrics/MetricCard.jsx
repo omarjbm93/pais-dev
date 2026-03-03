@@ -137,7 +137,7 @@ export default function MetricCard({ metric }) {
                     fontFamily: 'var(--font-display)',
                     fontSize: metric.large ? '2.8rem' : '2rem',
                     fontWeight: 600,
-                    color: '#f1f5f9',
+                    color: 'var(--text-main)',
                     lineHeight: 1,
                     letterSpacing: '-0.02em',
                 }}>
@@ -163,8 +163,9 @@ export default function MetricCard({ metric }) {
                         </defs>
                         <Tooltip
                             contentStyle={{
-                                background: '#060d1a', border: '1px solid rgba(201,168,76,0.15)',
+                                background: 'var(--bg-nav)', border: '1px solid rgba(201,168,76,0.15)',
                                 borderRadius: '8px', fontSize: '0.72rem', padding: '6px 10px',
+                                color: 'var(--text-main)',
                             }}
                             formatter={(v) => [v.toFixed(1), metric.title]}
                             labelFormatter={() => ''}

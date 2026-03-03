@@ -13,7 +13,7 @@ export default function HeroSection() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 overflow: 'hidden',
-                background: 'radial-gradient(ellipse at 30% 40%, #0f2040 0%, #060d1a 60%, #0A1628 100%)',
+                background: 'radial-gradient(ellipse at 30% 40%, var(--bg-surface) 0%, var(--bg-main) 80%, var(--bg-main) 100%)',
             }}
         >
             {/* Three.js Particle Canvas */}
@@ -29,7 +29,7 @@ export default function HeroSection() {
             }} />
             <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0, height: '200px', zIndex: 1,
-                background: 'linear-gradient(to top, #0A1628, transparent)',
+                background: 'linear-gradient(to top, var(--bg-main), transparent)',
                 pointerEvents: 'none',
             }} />
 
@@ -67,7 +67,7 @@ export default function HeroSection() {
                         fontSize: 'clamp(2.8rem, 7vw, 6rem)',
                         fontWeight: 600,
                         lineHeight: 1.05,
-                        color: '#f1f5f9',
+                        color: 'var(--text-main)',
                         marginBottom: '0.3rem',
                         animation: 'fadeInUp 0.9s 0.1s ease both',
                     }}
@@ -159,7 +159,7 @@ export default function HeroSection() {
                         <div key={stat.label} style={{ textAlign: 'center' }}>
                             <div style={{
                                 fontFamily: 'var(--font-display)', fontSize: '2.2rem',
-                                fontWeight: 600, color: '#E8C96D', lineHeight: 1,
+                                fontWeight: 600, color: 'var(--accent-gold)', lineHeight: 1,
                             }}>
                                 {stat.num}{stat.suffix}
                             </div>

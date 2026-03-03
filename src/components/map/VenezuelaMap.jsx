@@ -62,7 +62,7 @@ export default function VenezuelaMap() {
             id="estados"
             style={{
                 padding: 'clamp(4rem, 8vw, 7rem) clamp(1.2rem, 5vw, 3rem)',
-                background: 'linear-gradient(180deg, #060d1a 0%, #0A1628 100%)',
+                background: 'linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-main) 100%)',
                 position: 'relative', overflow: 'hidden',
             }}
         >
@@ -85,7 +85,7 @@ export default function VenezuelaMap() {
                     <h2 style={{
                         fontFamily: 'var(--font-display)',
                         fontSize: 'clamp(2rem, 4vw, 3rem)',
-                        fontWeight: 600, color: '#f1f5f9', marginBottom: '1rem',
+                        fontWeight: 600, color: 'var(--text-main)', marginBottom: '1rem',
                     }}>
                         Control por Estado
                     </h2>
@@ -100,8 +100,8 @@ export default function VenezuelaMap() {
                     <div
                         style={{
                             flex: '1 1 520px',
-                            background: 'rgba(10,22,40,0.6)',
-                            border: '1px solid rgba(201,168,76,0.12)',
+                            background: 'var(--bg-surface-glass)',
+                            border: '1px solid var(--border-color)',
                             borderRadius: '20px',
                             padding: '1.5rem',
                             position: 'relative',
@@ -125,9 +125,11 @@ export default function VenezuelaMap() {
                             viewBox="100 50 420 300"
                             style={{ width: '100%', height: 'auto', position: 'relative', zIndex: 1 }}
                             onMouseMove={handleMouseMove}
+                            aria-label="Mapa Interactivo de Venezuela"
+                            role="img"
                         >
                             {/* Ocean background */}
-                            <rect x="100" y="50" width="420" height="300" fill="rgba(10,22,40,0.3)" rx="8" />
+                            <rect x="100" y="50" width="420" height="300" fill="var(--bg-main)" rx="8" />
 
                             {/* State rectangles (stylized) */}
                             {STATES.map(state => (
@@ -212,7 +214,7 @@ export default function VenezuelaMap() {
                                     onMouseLeave={() => setHovered(null)}
                                 >
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                                        <span style={{ fontSize: '0.68rem', fontWeight: 600, color: '#e2e8f0', lineHeight: 1.3 }}>
+                                        <span style={{ fontSize: '0.68rem', fontWeight: 600, color: 'var(--text-main)', lineHeight: 1.3 }}>
                                             {state.name}
                                         </span>
                                         <span style={{
@@ -241,7 +243,7 @@ export default function VenezuelaMap() {
             {tooltip && (
                 <div style={{
                     position: 'fixed', left: tooltip.x + 16, top: tooltip.y - 8,
-                    background: '#060d1a', border: '1px solid rgba(201,168,76,0.3)',
+                    background: 'var(--bg-nav)', border: '1px solid var(--border-color)',
                     borderRadius: '10px', padding: '10px 14px', zIndex: 999,
                     pointerEvents: 'none', minWidth: '160px',
                     boxShadow: '0 8px 32px rgba(0,0,0,0.5)',

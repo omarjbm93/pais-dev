@@ -38,8 +38,8 @@ function Particles({ count = 900 }) {
     useFrame(({ clock }) => {
         if (!mesh.current) return
         const t = clock.getElapsedTime()
-        mesh.current.rotation.y = t * 0.04
-        mesh.current.rotation.x = t * 0.015 + mouse.current.y * 0.08
+        mesh.current.rotation.y = t * 0.02
+        mesh.current.rotation.x = t * 0.008 + mouse.current.y * 0.08
         mesh.current.rotation.z = mouse.current.x * 0.05
     })
 
@@ -73,7 +73,7 @@ function Particles({ count = 900 }) {
                 size={0.045}
                 vertexColors
                 transparent
-                opacity={0.85}
+                opacity={0.35}
                 sizeAttenuation
                 depthWrite={false}
             />
@@ -113,7 +113,7 @@ function ConstellationLines({ count = 120 }) {
                     itemSize={3}
                 />
             </bufferGeometry>
-            <lineBasicMaterial color="#C9A84C" transparent opacity={0.08} />
+            <lineBasicMaterial color="#C9A84C" transparent opacity={0.04} />
         </lineSegments>
     )
 }
@@ -125,7 +125,6 @@ export default function ParticleField() {
             style={{ position: 'absolute', inset: 0 }}
             gl={{ antialias: true, alpha: true }}
         >
-            <fog attach="fog" args={['#060d1a', 8, 22]} />
             <Particles count={900} />
             <ConstellationLines count={150} />
         </Canvas>

@@ -2,22 +2,50 @@
 @import "tailwindcss";
 
 :root {
-  --navy-950: #060d1a;
-  --navy-900: #0A1628;
-  --navy-800: #0f2040;
-  --navy-700: #132850;
-  --navy-600: #1a3566;
-  --slate-700: #334155;
-  --slate-500: #64748b;
-  --slate-400: #94a3b8;
-  --slate-300: #cbd5e1;
-  --gold-300: #f0d080;
-  --gold-400: #E8C96D;
-  --gold-500: #C9A84C;
-  --gold-600: #a87d28;
-  --crimson: #8b1a1a;
+  /* Primitive Colors */
+  --color-navy-950: #060d1a;
+  --color-navy-900: #0A192F;
+  --color-navy-800: #112240;
+  --color-slate-900: #011627;
+  --color-slate-700: #334155;
+  --color-slate-500: #64748b;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #cbd5e1;
+  --color-slate-50:  #F8FAFC;
+  --color-gold-300: #f0d080;
+  --color-gold-400: #E8C96D;
+  --color-gold-500: #B8860B;
+  --color-gold-600: #a87d28;
+  --color-emerald-500: #10b981;
+  
   --font-display: 'Cormorant Garamond', serif;
   --font-body: 'DM Sans', sans-serif;
+
+  /* Theme: Light (default) */
+  --bg-main: var(--color-slate-50);
+  --bg-surface: #ffffff;
+  --bg-surface-glass: rgba(255, 255, 255, 0.7);
+  --bg-nav: rgba(248, 250, 252, 0.92);
+  --text-main: var(--color-slate-900);
+  --text-muted: var(--color-slate-500);
+  --border-color: rgba(1, 22, 39, 0.1);
+  --border-hover: rgba(184, 134, 11, 0.45);
+  --accent-gold: var(--color-gold-500);
+  --btn-text: var(--color-slate-50);
+}
+
+.dark {
+  /* Theme: Dark */
+  --bg-main: var(--color-navy-900);
+  --bg-surface: var(--color-navy-800);
+  --bg-surface-glass: rgba(10, 25, 47, 0.7);
+  --bg-nav: rgba(6, 13, 26, 0.92);
+  --text-main: #e2e8f0;
+  --text-muted: var(--color-slate-400);
+  --border-color: rgba(184, 134, 11, 0.15);
+  --border-hover: rgba(184, 134, 11, 0.45);
+  --accent-gold: var(--color-gold-500);
+  --btn-text: var(--color-navy-900);
 }
 
 * {
@@ -32,16 +60,24 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--navy-900);
-  color: #e2e8f0;
+  background-color: var(--bg-main);
+  color: var(--text-main);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--navy-900); }
-::-webkit-scrollbar-thumb { background: var(--gold-600); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--gold-500); }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: var(--color-gold-600); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-gold-500); }
+
+/* Accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 
 /* Section fade-in */
 .section-fade {
@@ -107,43 +143,44 @@ body {
 
 /* Glass card */
 .glass-card {
-  background: rgba(10, 22, 40, 0.7);
+  background: var(--bg-surface-glass);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(201, 168, 76, 0.15);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  border: 1px solid var(--border-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
 }
 .glass-card:hover {
-  border-color: rgba(201, 168, 76, 0.45);
-  box-shadow: 0 0 24px rgba(201, 168, 76, 0.12);
+  border-color: var(--border-hover);
+  box-shadow: 0 0 24px rgba(184, 134, 11, 0.12);
   transform: translateY(-2px);
 }
 
 /* Gold button */
 .btn-gold {
-  background: linear-gradient(135deg, #C9A84C, #f0d080, #C9A84C);
+  background: linear-gradient(135deg, var(--color-gold-500), var(--color-gold-300), var(--color-gold-500));
   background-size: 200% auto;
-  color: var(--navy-900);
+  color: var(--btn-text);
   font-weight: 600;
   letter-spacing: 0.05em;
-  transition: background-position 0.4s, box-shadow 0.3s, transform 0.2s;
+  transition: background-position 0.4s, box-shadow 0.3s, transform 0.2s, color 0.3s ease;
 }
 .btn-gold:hover {
   background-position: right center;
-  box-shadow: 0 4px 24px rgba(201,168,76,0.5);
+  box-shadow: 0 4px 24px rgba(184,134,11,0.5);
   transform: translateY(-1px);
 }
 
 /* Outline button */
 .btn-outline {
-  border: 1.5px solid rgba(201,168,76,0.6);
-  color: #E8C96D;
+  border: 1.5px solid rgba(184,134,11,0.6);
+  color: var(--color-gold-400);
+  background: transparent;
   letter-spacing: 0.05em;
   transition: background 0.3s, border-color 0.3s, transform 0.2s;
 }
 .btn-outline:hover {
-  background: rgba(201,168,76,0.1);
-  border-color: #E8C96D;
+  background: rgba(184,134,11,0.1);
+  border-color: var(--color-gold-400);
   transform: translateY(-1px);
 }
 
